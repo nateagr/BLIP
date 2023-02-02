@@ -1,24 +1,33 @@
-from distutils.core import setup
-from pip._internal.req import parse_requirements
+#!/usr/bin/env python3
 
-requirements = [
-    ir.requirement for ir in parse_requirements(
-        'requirements.txt',
-        session='test')]
+import os
+import setuptools
 
-setup(
+
+def _read_reqs(relpath):
+    fullpath = os.path.join(os.path.dirname(__file__), relpath)
+    with open(fullpath) as f:
+        return [s.strip() for s in f.readlines()
+                if (s.strip() and not s.startswith("#"))]
+
+
+_REQUIREMENTS_TXT = _read_reqs("requirements.txt")
+
+
+setuptools.setup(
     name='blip-vit-fork',
-    packages=['blip', 'blip.models', 'blip.configs'],
     version='0.0.1',
-    description='BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation',
-    author='salesforce',
-    author_email='junnan.li@salesforce.com',
-    url='https://github.com/nateagr/BLIP',
-    install_requires=requirements,
-    classifiers=[],
+    install_requires=_REQUIREMENTS_TXT,
+    include_package_data=True,
     package_data={'': [
         '*.txt',
         '*.yaml',
         '*.json'
-    ]}
+    ]},
+    classifiers=[],
+    description='BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation',
+    author='salesforce',
+    author_email='junnan.li@salesforce.com',
+    url='https://github.com/nateagr/BLIP',
+    packages=setuptools.find_packages()
 )
