@@ -23,8 +23,6 @@ jobs:
         python -m pip install pip
         pip install setuptools wheel twine
     - name: Release
-      permissions:
-        contents: write
       if: ${{ steps.regex-match.outputs.match != '' }}
       uses: softprops/action-gh-release@v1
       with:
