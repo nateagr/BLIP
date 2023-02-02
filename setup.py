@@ -7,15 +7,13 @@ requirements = [
         session='test')]
 
 setup(
-    name='blip-vit',
+    name='blip-vit-fork',
     packages=['blip', 'blip.models', 'blip.configs'],
-    version='0.0.3',  # Ideally should be same as your GitHub release tag varsion
+    version='0.0.1',
     description='BLIP: Bootstrapping Language-Image Pre-training for Unified Vision-Language Understanding and Generation',
     author='salesforce',
     author_email='junnan.li@salesforce.com',
-    url='https://github.com/fernandoTB/BLIP',
-    download_url='https://github.com/fernandoTB/BLIP/archive/refs/tags/0.0.3.tar.gz',
-    keywords=['0.0.3'],
+    url='https://github.com/nateagr/BLIP',
     install_requires=requirements,
     classifiers=[],
     package_data={'': [
